@@ -25,17 +25,17 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: TransparentCard(
                     color: activeCardColor,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-
-                      ],
+                    child: IconCard(
+                      iconData: FontAwesomeIcons.mars,
+                      label: 'MALE',
                     ),
                   ),
                 ),
                 Expanded(
                   child: TransparentCard(
                     color: activeCardColor,
+                    child: IconCard(
+                        iconData: FontAwesomeIcons.venus, label: 'FEMALE'),
                   ),
                 ),
               ],
@@ -70,6 +70,33 @@ class _InputPageState extends State<InputPage> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class IconCard extends StatelessWidget {
+  final IconData iconData;
+  final String label;
+
+  IconCard({@required this.iconData, @required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Icon(
+          iconData,
+          size: 80.0,
+        ),
+        SizedBox(
+          height: 10.0,
+        ),
+        Text(
+          label,
+          style: TextStyle(color: Color(0xFFFDFFFF)),
+        )
+      ],
     );
   }
 }
