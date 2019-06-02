@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 
-import 'constants.dart';
-import 'custom_card.dart';
-import './custom_components/bottom_button.dart';
+import '../constants.dart';
+import 'package:bmi_calculator/custom_components/custom_card.dart';
+import '../custom_components/bottom_button.dart';
 
 class ResultsPage extends StatelessWidget {
+  final String bmi;
+  final String resultText;
+  final String suggestionText;
+
+  ResultsPage(
+      {@required this.bmi,
+      @required this.resultText,
+      @required this.suggestionText});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +41,7 @@ class ResultsPage extends StatelessWidget {
                     Expanded(
                       child: Center(
                         child: Text(
-                          'OVERWEIGHT',
+                          resultText.toUpperCase(),
                           style: kResultTitleTextStyle,
                         ),
                       ),
@@ -40,7 +49,7 @@ class ResultsPage extends StatelessWidget {
                     Expanded(
                       child: Center(
                         child: Text(
-                          '26.7',
+                          bmi,
                           style: kBmiNumberTextStyle,
                         ),
                       ),
@@ -48,7 +57,7 @@ class ResultsPage extends StatelessWidget {
                     Expanded(
                       child: Center(
                         child: Text(
-                          'You have a higher than normal body weight.',
+                          suggestionText,
                           textAlign: TextAlign.center,
                           style: kResultSuggestionTextStyle,
                         ),
